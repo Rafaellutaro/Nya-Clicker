@@ -1,8 +1,17 @@
-interface CatInterface {
-    id: number;
-    name: string;
-    imageUrl: string;
-    clickCount: number;
+interface CatImages {
+    closed: string;
+    open: string;
 }
 
-export type { CatInterface };
+interface CatInterface {
+  id: number;
+  name: string;
+  imgs: CatImages
+}
+
+interface GameState{
+    reach: number;
+    cats: CatInterface[];
+}
+
+export type { CatInterface, GameState};

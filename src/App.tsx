@@ -1,14 +1,27 @@
 import { useState } from 'react'
+import Cats from './catService'
 import './App.css'
 import closedCat from './assets/closed-mouth.png'
 import openCat from './assets/open-mouth.png'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(() => {
+    const game = Cats.gameService.getGameState();
+    return game.reach;
+  });
+  
   const [click, setClick] = useState(false)
 
   const handleClick = () => {
-    setCount(c => c + 1)
+    setCount(c => {
+      const newCount = c + 1;
+      const game = Cats.gameService.getGameState();
+      game.reach = newCount;
+      Cats.gameService.saveGameState(game);
+      return newCount;
+    });
+
+    
     setClick(true)
     setTimeout(() => setClick(false), 150)
   }
