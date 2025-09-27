@@ -7,7 +7,7 @@ import music from './assets/sounds/wiggle-until-you-giggle-217437.mp3'
 import {RxHamburgerMenu} from 'react-icons/rx'
 
 function App() {
-  const thresholds = [0, 150, 500, 1000];
+  const thresholds = [0, 300, 800, 2000];
 
   const [playingMusic, setPlayingMusic] = useState(false);
   const { play: mainMusic } = useSound(music, { loop: true, volume: 0.03 });
@@ -71,7 +71,7 @@ function App() {
     <>
       <div className='App'>
         <div className="topBar">
-          <a href="#" className='menu'>
+          <a href="#menu" className='menu'>
             <RxHamburgerMenu className='menuIcon' />
           </a>
         </div>
@@ -98,6 +98,7 @@ function App() {
           </div>
         </div>
 
+        <a href="https://www.vecteezy.com/free-png/cat" className='license'>Cat PNGs by Vecteezy</a>
       </div>
     </>
   )

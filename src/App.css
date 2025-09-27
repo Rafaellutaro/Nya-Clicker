@@ -105,3 +105,12 @@ h1{
   text-align: center;
   font-size: var(--font-size-xs);
 }
+
+/* footer */
+
+.license{
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}

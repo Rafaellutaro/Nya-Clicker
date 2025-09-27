@@ -1,10 +1,13 @@
 import type { CatInterface } from "./catInterface";
 import type { GameState } from "./catInterface";
-import closedMouth_popUp from "./assets/closed-mouth.png";
-import openMouth_popUP from "./assets/open-mouth.png";
-import standingCatClosed from "./assets/standingCat.png";
-import standingCatOpen from "./assets/standindCat-open.png";
+import closedMouth_popUp from "./assets/imgs/closed-mouth.png";
+import openMouth_popUP from "./assets/imgs/open-mouth.png";
+import standingCatClosed from "./assets/imgs/standingCat.png";
+import standingCatOpen from "./assets/imgs/standindCat-open.png";
 import popCatsound from './assets/sounds/popCat.mp3'
+import moodyCat_closed from './assets/imgs/angryCat.png'
+import moodyCat_open from './assets/imgs/sadCat.png'
+import sadCry from './assets/sounds/sadCry.mp3'
 import dancingCatSound from './assets/sounds/funny-cat-meow-246012 (mp3cut.net).mp3'
 
 
@@ -22,7 +25,7 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
     , sound: popCatsound
 }
 
- const fatCat: CatInterface = {
+ const dancingCat: CatInterface = {
     id: 2,
     name: "dancing Cat",
     imgs: {
@@ -32,7 +35,17 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
     , sound: dancingCatSound
 }
 
-const cats: CatInterface[] = [popCat, fatCat];
+ const moodyCat: CatInterface = {
+    id: 3,
+    name: "moody Cat",
+    imgs: {
+        closed: moodyCat_closed,
+        open: moodyCat_open
+    }
+    , sound: sadCry
+}
+
+const cats: CatInterface[] = [popCat, dancingCat, moodyCat];
 
 const catService = {
 

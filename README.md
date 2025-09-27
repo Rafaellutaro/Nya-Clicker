@@ -1,0 +1,1 @@
+https://game.naver.com/lounge/catyaongidle/board/detail/4419048
