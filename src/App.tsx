@@ -3,13 +3,22 @@ import Cats from './catService'
 import './App.css'
 import { motion } from "motion/react"
 import { useSound } from 'react-sounds';
+import music from './assets/sounds/wiggle-until-you-giggle-217437.mp3'
 
 function App() {
   const thresholds = [0, 150, 500, 1000];
 
+  const [playingMusic, setPlayingMusic] = useState(false);
+  const { play: mainMusic } = useSound(music, { loop: true, volume: 0.03 });
+
   const [count, setCount] = useState(() => {
     const game = Cats.gameService.getGameState();
     return game.reach;
+  });
+
+  const [allTimeCount, setAllTimeCount] = useState(() => {
+    const game = Cats.gameService.getGameState();
+    return game.count || 0;
   });
 
   const [click, setClick] = useState(false)
@@ -22,13 +31,16 @@ function App() {
   });
 
   const allCats = Cats.catService.getCats();
-  const { play } = useSound(allCats[currentCatIndex].sound);
+  const { play: catSound } = useSound(allCats[currentCatIndex].sound, { volume: 0.5 });
 
   const handleClick = () => {
     setCount(c => {
       const newCount = c + 1;
       const game = Cats.gameService.getGameState();
       game.reach = newCount;
+
+      game.count = (game.count || 0) + 1;
+      setAllTimeCount(game.count);
       Cats.gameService.saveGameState(game);
 
       const newIndex = thresholds.filter(t => newCount >= t).length - 1;
@@ -37,9 +49,14 @@ function App() {
       return newCount;
     });
 
-    play();
+    catSound();
     setClick(true)
     setTimeout(() => setClick(false), 150)
+
+    if (!playingMusic) {
+      mainMusic();
+      setPlayingMusic(true);
+    }
   }
 
 
@@ -63,6 +80,18 @@ function App() {
             <h1 className='count'>{count}</h1>
           </div>
         </div>
+
+        <div className="status">
+          <a href="#" style={{ textDecoration: 'none' }}>
+            <h1 >Status</h1>
+          </a>
+
+          <div className="statusInfo">
+            <p>Cat: {allCats[currentCatIndex].name}</p>
+            <p>Clicks: {allTimeCount}</p>
+          </div>
+        </div>
+
       </div>
     </>
   )

@@ -5,12 +5,13 @@ import openMouth_popUP from "./assets/open-mouth.png";
 import standingCatClosed from "./assets/standingCat.png";
 import standingCatOpen from "./assets/standindCat-open.png";
 import popCatsound from './assets/sounds/popCat.mp3'
+import dancingCatSound from './assets/sounds/funny-cat-meow-246012 (mp3cut.net).mp3'
+
 
 const LOCAL_STORAGE_KEY_CATS = "catData";
 const LOCAL_STORAGE_KEY_GAME = "gameData";
 
 //cats
-
  const popCat: CatInterface = {
     id: 1,
     name: "Pop Cat",
@@ -23,12 +24,12 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
 
  const fatCat: CatInterface = {
     id: 2,
-    name: "fat Cat",
+    name: "dancing Cat",
     imgs: {
         closed: standingCatClosed,
         open: standingCatOpen
     }
-    , sound: ''
+    , sound: dancingCatSound
 }
 
 const cats: CatInterface[] = [popCat, fatCat];
@@ -54,7 +55,8 @@ const catService = {
 
 const gameStateDefault: GameState = {
     reach: 0,
-    cats: cats
+    cats: cats,
+    count: 0
     
 }
 

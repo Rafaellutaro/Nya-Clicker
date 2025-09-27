@@ -13,6 +13,7 @@ interface CatInterface {
 interface GameState{
     reach: number;
     cats: CatInterface[];
+    count: number;
 }
 
 export type { CatInterface, GameState};

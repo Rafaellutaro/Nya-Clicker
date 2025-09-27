@@ -1,8 +1,8 @@
 /* App */
 
 .App {
-  height: 98vh;
-  width: 98vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,4 +55,32 @@
   color: var(--text-color);
   font-size: var(--font-size-md);
   font-weight: 600;
+}
+
+/* Status */
+
+.status{
+  margin-top: 25%;
+  height: 100%;
+  width: 50%;
+  background-color: var(--secondary-color);
+  border-radius: 25px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1{
+  color: var(--secondary-text-color);
+  font-size: var(--font-size-lg);
+  font-weight:600;
+}
+
+.statusInfo{
+  color: var(--secondary-text-color);
+  font-size: var(--font-size-s);
+  font-weight: 600;
+  text-align: center;
+  font-size: var(--font-size-xs);
 }
