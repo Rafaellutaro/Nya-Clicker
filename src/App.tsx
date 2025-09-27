@@ -1,33 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import closedCat from './assets/closed-mouth.png'
+import openCat from './assets/open-mouth.png'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [click, setClick] = useState(false)
+
+  const handleClick = () => {
+    setCount(c => c + 1)
+    setClick(true)
+    setTimeout(() => setClick(false), 150)
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='App'>
+        <div className='Imgs'>
+          <img  className='Img' src={click ? openCat : closedCat} alt="" onClick={handleClick}/>
+        </div>
+        <div className="counter">
+          <div className="countBack">
+            <h1 className='count'>{count}</h1>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

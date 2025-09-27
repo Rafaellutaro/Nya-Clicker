@@ -1,0 +1,21 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/* Variable Css */
+
+:root {
+
+  /* Colors */
+
+  --background : #1E1E1E;
+  --text-color : black;
+  --primary-color : #fff;
+  --secondary-color : #FF69B4;
+
+  /* Font Size */
+
+  --font-size-lg : 3rem;
+  --font-size-md : 2rem;
+  --font-size-sm : 1.5rem;
+  --font-size-xs : 1rem;
+}
