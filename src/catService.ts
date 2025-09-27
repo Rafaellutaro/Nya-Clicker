@@ -1,5 +1,9 @@
 import type { CatInterface } from "./catInterface";
 import type { GameState } from "./catInterface";
+import closedMouth_popUp from "./assets/closed-mouth.png";
+import openMouth_popUP from "./assets/open-mouth.png";
+import standingCatClosed from "./assets/standingCat.png";
+import standingCatOpen from "./assets/standindCat-open.png";
 
 const LOCAL_STORAGE_KEY_CATS = "catData";
 const LOCAL_STORAGE_KEY_GAME = "gameData";
@@ -10,12 +14,21 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
     id: 1,
     name: "Pop Cat",
     imgs: {
-        closed: "./assets/closed-mouth.png",
-        open: "./assets/open-mouth.png"
+        closed: closedMouth_popUp,
+        open: openMouth_popUP
     }
 }
 
-const cats: CatInterface[] = [popCat];
+ const fatCat: CatInterface = {
+    id: 2,
+    name: "fat Cat",
+    imgs: {
+        closed: standingCatClosed,
+        open: standingCatOpen
+    }
+}
+
+const cats: CatInterface[] = [popCat, fatCat];
 
 const catService = {
 
