@@ -7,6 +7,7 @@ interface CatInterface {
   id: number;
   name: string;
   imgs: CatImages
+  sound: string;
 }
 
 interface GameState{

@@ -4,6 +4,7 @@ import closedMouth_popUp from "./assets/closed-mouth.png";
 import openMouth_popUP from "./assets/open-mouth.png";
 import standingCatClosed from "./assets/standingCat.png";
 import standingCatOpen from "./assets/standindCat-open.png";
+import popCatsound from './assets/sounds/popCat.mp3'
 
 const LOCAL_STORAGE_KEY_CATS = "catData";
 const LOCAL_STORAGE_KEY_GAME = "gameData";
@@ -17,6 +18,7 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
         closed: closedMouth_popUp,
         open: openMouth_popUP
     }
+    , sound: popCatsound
 }
 
  const fatCat: CatInterface = {
@@ -26,6 +28,7 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
         closed: standingCatClosed,
         open: standingCatOpen
     }
+    , sound: ''
 }
 
 const cats: CatInterface[] = [popCat, fatCat];

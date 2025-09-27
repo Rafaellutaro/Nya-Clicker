@@ -2,23 +2,27 @@ import { useState } from 'react'
 import Cats from './catService'
 import './App.css'
 import { motion } from "motion/react"
+import { useSound } from 'react-sounds';
 
 function App() {
+  const thresholds = [0, 150, 500, 1000];
+
   const [count, setCount] = useState(() => {
     const game = Cats.gameService.getGameState();
     return game.reach;
   });
-  
+
   const [click, setClick] = useState(false)
 
   const [currentCatIndex, setCurrentCatIndex] = useState(() => {
-  const game = Cats.gameService.getGameState();
-  const count = game.reach;
+    const game = Cats.gameService.getGameState();
+    const count = game.reach;
 
-  // compute initial index
-  const thresholds = [0, 150, 500, 1000];
-  return thresholds.filter(t => count >= t).length - 1;
-});
+    return thresholds.filter(t => count >= t).length - 1;
+  });
+
+  const allCats = Cats.catService.getCats();
+  const { play } = useSound(allCats[currentCatIndex].sound);
 
   const handleClick = () => {
     setCount(c => {
@@ -26,20 +30,19 @@ function App() {
       const game = Cats.gameService.getGameState();
       game.reach = newCount;
       Cats.gameService.saveGameState(game);
-      
-      if (newCount >= 150) {
-        setCurrentCatIndex(1);
-      }
+
+      const newIndex = thresholds.filter(t => newCount >= t).length - 1;
+      setCurrentCatIndex(newIndex);
 
       return newCount;
     });
 
-    
+    play();
     setClick(true)
     setTimeout(() => setClick(false), 150)
   }
 
-  const allCats = Cats.catService.getCats();
+
 
   let closedCat = allCats[currentCatIndex].imgs.closed;
   let openCat = allCats[currentCatIndex].imgs.open;
@@ -48,12 +51,12 @@ function App() {
 
   return (
     <>
-    <div className='App'>
+      <div className='App'>
         <div className='Imgs'>
-          <motion.img  
-          whileHover={{ scale: 1 }}
-          whileTap={{ scale: 0.90 }}
-          className='Img' src={click ? openCat : closedCat} alt="" onClick={handleClick}/>
+          <motion.img
+            whileHover={{ scale: 1 }}
+            whileTap={{ scale: 0.90 }}
+            className='Img' src={click ? openCat : closedCat} alt="" onClick={handleClick} />
         </div>
         <div className="counter">
           <div className="countBack">
