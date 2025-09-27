@@ -4,6 +4,7 @@ import './App.css'
 import { motion } from "motion/react"
 import { useSound } from 'react-sounds';
 import music from './assets/sounds/wiggle-until-you-giggle-217437.mp3'
+import {RxHamburgerMenu} from 'react-icons/rx'
 
 function App() {
   const thresholds = [0, 150, 500, 1000];
@@ -69,6 +70,11 @@ function App() {
   return (
     <>
       <div className='App'>
+        <div className="topBar">
+          <a href="#" className='menu'>
+            <RxHamburgerMenu className='menuIcon' />
+          </a>
+        </div>
         <div className='Imgs'>
           <motion.img
             whileHover={{ scale: 1 }}

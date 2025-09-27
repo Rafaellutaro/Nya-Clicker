@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 3.5%;
   gap: 20px;
   font-family: 'Poppins', sans-serif;
 }
@@ -54,6 +55,26 @@
 .count{
   color: var(--text-color);
   font-size: var(--font-size-md);
+  font-weight: 600;
+}
+
+/* topBar */
+
+.topBar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;      /* optional, if you want a bar across the top */
+  display: flex;     /* if you want to align children */
+  justify-content: flex-end;
+  padding: 10px;    /* spacing inside the bar */
+  z-index: 100;     /* keep it above other content */
+}
+
+.menu {
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  font-size: var(--font-size-lg);
   font-weight: 600;
 }
 
