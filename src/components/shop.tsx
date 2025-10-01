@@ -21,21 +21,21 @@ const Shop: React.FC<ShopProps> = ({ isOpen, onClose, handleBuyDoubleClick, prop
         <button className="close-btn" onClick={onClose}>
           <RiCloseLargeFill size={30} />
         </button>
-        <h2 className="shop-title">Upgrades</h2>
+        <h2 className="shop-title">Melhorias</h2>
 
         <div className="drawer">
           {propsList.map((item) => (
             <div key={item.id} className="drawer-slot">
-              <div className="item-icon"><item.imgs /></div>
+              <div className="item-icon"><item.imgs  size={40}/></div>
               <div className="item-info">
                 <h3>{item.name}</h3>
                 <p>
-                  Cost: {item.price[game.doubleClickLevel]} coins
+                  Preço: {item.price[game.doubleClickLevel]} pontos
                 </p>
 
               </div>
               <button className="buy-btn" onClick={handleBuyDoubleClick}>
-                Buy
+                Comprar
               </button>
             </div>
           ))}

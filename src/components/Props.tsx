@@ -7,7 +7,7 @@ import { TbMultiplier2X } from "react-icons/tb";
 const doubleClick: PropsInterface = {
     id: 1,
     name: "Double Click",
-    price: [250, 1000, 5000, 15000, 50000],
+    price: [150, 300, 1000, 3000, 5000],
     imgs: TbMultiplier2X,
     effects: [2, 4, 6, 8, 10]
 }

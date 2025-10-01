@@ -122,7 +122,7 @@ function App() {
           </a>
 
           <div className="statusInfo">
-            <p>Cat: {allCats[currentCatIndex].name}</p>
+            <p>Gato: {allCats[currentCatIndex].name}</p>
             <p>Clicks: {allTimeCount}</p>
           </div>
         </div>

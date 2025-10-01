@@ -9,6 +9,9 @@ import moodyCat_closed from './assets/imgs/angryCat.png'
 import moodyCat_open from './assets/imgs/sadCat.png'
 import sadCry from './assets/sounds/sadCry.mp3'
 import dancingCatSound from './assets/sounds/funny-cat-meow-246012 (mp3cut.net).mp3'
+import bananaCat_closed from './assets/imgs/bananaCat.png'
+import bananaCat_open from './assets/imgs/CryingBananaCat.png'
+import bonk from './assets/sounds/bonk_7zPAD7C.mp3'
 
 
 const LOCAL_STORAGE_KEY_CATS = "catData";
@@ -17,7 +20,7 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
 //cats
  const popCat: CatInterface = {
     id: 1,
-    name: "Pop Cat",
+    name: "Gato pop",
     imgs: {
         closed: closedMouth_popUp,
         open: openMouth_popUP
@@ -27,7 +30,7 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
 
  const dancingCat: CatInterface = {
     id: 2,
-    name: "dancing Cat",
+    name: "Gato dançarino",
     imgs: {
         closed: standingCatClosed,
         open: standingCatOpen
@@ -37,7 +40,7 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
 
  const moodyCat: CatInterface = {
     id: 3,
-    name: "moody Cat",
+    name: "Gato Bravo",
     imgs: {
         closed: moodyCat_closed,
         open: moodyCat_open
@@ -45,7 +48,17 @@ const LOCAL_STORAGE_KEY_GAME = "gameData";
     , sound: sadCry
 }
 
-const cats: CatInterface[] = [popCat, dancingCat, moodyCat];
+const bananaCat: CatInterface = {
+    id: 4,
+    name: 'Gato Banana',
+    imgs: {
+        closed: bananaCat_closed,
+        open: bananaCat_open 
+    },
+    sound: bonk
+}
+
+const cats: CatInterface[] = [popCat, dancingCat, moodyCat, bananaCat];
 
 const catService = {
 
