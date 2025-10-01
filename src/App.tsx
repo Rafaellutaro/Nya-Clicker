@@ -7,6 +7,7 @@ import music from './assets/sounds/wiggle-until-you-giggle-217437.mp3'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import Shop from './components/shop'
 import { propsService } from "./components/Props"
+import type { PropsInterface } from "./components/PropsInterface";
 
 function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
@@ -45,7 +46,6 @@ function App() {
   const handleBuyDoubleClick = () => {
     const success = propsService.addDoubleClick(); // updates localStorage
     if (!success) {
-      alert("Not enough coins!");
       return;
     }
 
@@ -102,7 +102,7 @@ function App() {
         </div>
 
 
-        <Shop isOpen={isShopOpen} onClose={() => setIsShopOpen(false)} handleBuyDoubleClick= {handleBuyDoubleClick}/>
+        <Shop isOpen={isShopOpen} onClose={() => setIsShopOpen(false)} handleBuyDoubleClick={handleBuyDoubleClick} propsList={propsService.getPropsList()}/>
 
         <div className='Imgs'>
           <motion.img
