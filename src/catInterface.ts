@@ -14,6 +14,8 @@ interface GameState{
     reach: number;
     cats: CatInterface[];
     count: number;
+    multiplier: number;
+    doubleClickLevel: number;
 }
 
 export type { CatInterface, GameState};

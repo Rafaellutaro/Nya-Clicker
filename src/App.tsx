@@ -5,8 +5,11 @@ import { motion } from "motion/react"
 import { useSound } from 'react-sounds';
 import music from './assets/sounds/wiggle-until-you-giggle-217437.mp3'
 import {RxHamburgerMenu} from 'react-icons/rx'
+import Shop from './components/shop'
 
 function App() {
+  const [isShopOpen, setIsShopOpen] = useState(false);
+
   const thresholds = [0, 300, 800, 2000];
 
   const [playingMusic, setPlayingMusic] = useState(false);
@@ -35,9 +38,9 @@ function App() {
   const { play: catSound } = useSound(allCats[currentCatIndex].sound, { volume: 0.5 });
 
   const handleClick = () => {
-    setCount(c => {
-      const newCount = c + 1;
+    
       const game = Cats.gameService.getGameState();
+      const newCount = (game.reach + game.multiplier);
       game.reach = newCount;
 
       game.count = (game.count || 0) + 1;
@@ -47,8 +50,7 @@ function App() {
       const newIndex = thresholds.filter(t => newCount >= t).length - 1;
       setCurrentCatIndex(newIndex);
 
-      return newCount;
-    });
+      setCount(newCount);
 
     catSound();
     setClick(true)
@@ -72,9 +74,13 @@ function App() {
       <div className='App'>
         <div className="topBar">
           <a href="#menu" className='menu'>
-            <RxHamburgerMenu className='menuIcon' />
+            <RxHamburgerMenu className='menuIcon' onClick={() => setIsShopOpen(true)}/>
           </a>
         </div>
+
+        
+        <Shop isOpen={isShopOpen} onClose={() => setIsShopOpen(false)} />
+
         <div className='Imgs'>
           <motion.img
             whileHover={{ scale: 1 }}

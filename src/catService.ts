@@ -69,7 +69,9 @@ const catService = {
 const gameStateDefault: GameState = {
     reach: 0,
     cats: cats,
-    count: 0
+    count: 0,
+    multiplier: 1,
+    doubleClickLevel: 0
     
 }
 

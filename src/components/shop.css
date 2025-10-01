@@ -1,0 +1,27 @@
+.shop-overlay {
+  position: fixed;
+  top: 0;
+  right: -100%; /* hidden by default */
+  width: 500px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  transition: right 0.3s ease-in-out;
+  z-index: 100;
+}
+
+.shop-overlay.visible {
+  right: 0; /* slide in */
+}
+
+.shop-panel {
+  padding: 20px;
+}
+
+.close-btn {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
