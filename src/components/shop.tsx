@@ -7,38 +7,10 @@ import Cats from '../catService'
 interface Shop {
     isOpen: boolean;
     onClose: () => void;
+    handleBuyDoubleClick: () => void;
 }
 
-const Shop: React.FC<Shop> = ({ isOpen, onClose }) => {
-    //get savedData
-
-    const [game, setGame] = useState<any>(() => {
-    return JSON.parse(localStorage.getItem("gameData") || "{}");
-  });
-
-  // sync localStorage updates into state
- useEffect(() => {
-  if (game && Object.keys(game).length > 0) {
-    localStorage.setItem("gameData", JSON.stringify(game));
-  }
-}, [game]);
-  
-
-  // click function for double click
-
-  const handleBuyDoubleClick = () => {
-    const success = propsService.addDoubleClick();
-
-    if (success) {
-      // re-read updated gameData
-
-      const updatedGame = JSON.parse(localStorage.getItem("gameData") || "{}");
-      setGame(updatedGame);
-    } else {
-      alert("Not enough coins!");
-    }
-  };
-
+const Shop: React.FC<Shop> = ({ isOpen, onClose, handleBuyDoubleClick }) => {
   return (
     <div className={`shop-overlay ${isOpen ? "visible" : ""}`}>
       <div className="shop-panel">

@@ -4,8 +4,9 @@ import './App.css'
 import { motion } from "motion/react"
 import { useSound } from 'react-sounds';
 import music from './assets/sounds/wiggle-until-you-giggle-217437.mp3'
-import {RxHamburgerMenu} from 'react-icons/rx'
+import { RxHamburgerMenu } from 'react-icons/rx'
 import Shop from './components/shop'
+import { propsService } from "./components/Props"
 
 function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
@@ -37,20 +38,42 @@ function App() {
   const allCats = Cats.catService.getCats();
   const { play: catSound } = useSound(allCats[currentCatIndex].sound, { volume: 0.5 });
 
+  // shop click
+
+  // click function for double click
+
+  const handleBuyDoubleClick = () => {
+    const success = propsService.addDoubleClick(); // updates localStorage
+    if (!success) {
+      alert("Not enough coins!");
+      return;
+    }
+
+    // update App states immediately
+    const updatedGame = Cats.gameService.getGameState();
+    setCount(updatedGame.reach);
+    setAllTimeCount(updatedGame.count);
+    const newIndex = thresholds.filter(t => updatedGame.reach >= t).length - 1;
+    setCurrentCatIndex(newIndex);
+
+    Cats.gameService.saveGameState(updatedGame);
+  };
+
+  // image click
   const handleClick = () => {
-    
-      const game = Cats.gameService.getGameState();
-      const newCount = (game.reach + game.multiplier);
-      game.reach = newCount;
 
-      game.count = (game.count || 0) + 1;
-      setAllTimeCount(game.count);
-      Cats.gameService.saveGameState(game);
+    const game = Cats.gameService.getGameState();
+    const newCount = (game.reach + game.multiplier);
+    game.reach = newCount;
 
-      const newIndex = thresholds.filter(t => newCount >= t).length - 1;
-      setCurrentCatIndex(newIndex);
+    game.count = (game.count || 0) + 1;
+    setAllTimeCount(game.count);
+    Cats.gameService.saveGameState(game);
 
-      setCount(newCount);
+    const newIndex = thresholds.filter(t => newCount >= t).length - 1;
+    setCurrentCatIndex(newIndex);
+
+    setCount(newCount);
 
     catSound();
     setClick(true)
@@ -74,12 +97,12 @@ function App() {
       <div className='App'>
         <div className="topBar">
           <a href="#menu" className='menu'>
-            <RxHamburgerMenu className='menuIcon' onClick={() => setIsShopOpen(true)}/>
+            <RxHamburgerMenu className='menuIcon' onClick={() => setIsShopOpen(true)} />
           </a>
         </div>
 
-        
-        <Shop isOpen={isShopOpen} onClose={() => setIsShopOpen(false)} />
+
+        <Shop isOpen={isShopOpen} onClose={() => setIsShopOpen(false)} handleBuyDoubleClick= {handleBuyDoubleClick}/>
 
         <div className='Imgs'>
           <motion.img
