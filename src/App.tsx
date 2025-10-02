@@ -7,7 +7,7 @@ import music from './assets/sounds/wiggle-until-you-giggle-217437.mp3'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import Shop from './components/shop'
 import { propsService } from "./components/Props"
-import type { PropsInterface } from "./components/PropsInterface";
+// import type { PropsInterface } from "./components/PropsInterface";
 
 function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
@@ -118,7 +118,7 @@ function App() {
 
       setCount(game.reach);
 
-      const newIndex = thresholds.filter(t => updatedGame.reach >= t).length - 1;
+      const newIndex = thresholds.filter(t => game.reach >= t).length - 1;
       setCurrentCatIndex(newIndex);
 
       Cats.gameService.saveGameState(game);

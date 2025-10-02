@@ -1,7 +1,7 @@
 // Shop.tsx
 import React from "react";
 import { RiCloseLargeFill } from 'react-icons/ri'
-import { propsService } from "./Props";
+// import { propsService } from "./Props";
 import type { PropsInterface } from "./PropsInterface";
 import './shop.css'
 

@@ -1,4 +1,4 @@
-import react from 'react';
+// import react from 'react';
 import type { PropsInterface } from "./PropsInterface";
 import { TbMultiplier2X } from "react-icons/tb";
 import { LiaRobotSolid } from "react-icons/lia";
