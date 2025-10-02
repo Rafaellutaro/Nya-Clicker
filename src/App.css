@@ -230,3 +230,87 @@ h1{
     font-size: var(--font-size-s);
   }
 }
+
+/* Celulares muito pequenos */
+@media (max-width: 425px) {
+  .App {
+    padding-top: 50%; /* empurra a imagem mais para baixo para ficar central */
+    gap: 15px;
+  }
+
+  .Imgs {
+    width: 380px;
+    height: 380px;
+  }
+
+  .Img {
+    width: 360px;
+    height: 360px;
+  }
+
+  .counter {
+    width: 100px;
+    height: 50px;
+  }
+
+  .countBack {
+    width: 90px;
+    height: 40px;
+  }
+
+  .count {
+    font-size: var(--font-size-xm);
+  }
+
+  .status {
+    width: 95%;
+    margin-top: 35%; /* joga o status bem mais para baixo */
+    border-radius: 12px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: var(--font-size-md);
+  }
+
+  .menu {
+    font-size: 14px;
+  }
+
+  .menuIcon {
+  width: 40px;
+  height: 40px;
+}
+}
+
+@media (max-width: 375px){
+  .Imgs {
+    width: 350px;
+    height: 350px;
+  }
+
+  .Img {
+    width: 330px;
+    height: 330px;
+  }
+
+  .status{
+    margin-top: 55%;
+  }
+}
+
+@media (max-width: 320px){
+  .Imgs {
+    width: 300px;
+    height: 300px;
+  }
+
+  .Img {
+    width: 280px;
+    height: 280px;
+  }
+
+  .status{
+    margin-top: 90%;
+  }
+}
