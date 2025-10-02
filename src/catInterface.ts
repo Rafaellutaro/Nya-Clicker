@@ -15,9 +15,9 @@ interface GameState{
     cats: CatInterface[];
     count: number;
     multiplier: number;
-    doubleClickLevel: number;
-    autoClickLevel: number;
-    autoClickInterval?: number
+    DoubleClickLevel: number;
+    AutoClickLevel: number;
+    autoClickInterval: number
 }
 
 export type { CatInterface, GameState};

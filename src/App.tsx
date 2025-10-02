@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Cats from './catService'
 import './App.css'
 import { motion } from "motion/react"
@@ -41,6 +41,40 @@ function App() {
 
   // shop click
 
+  // use affect to reload auto click
+  // using autoClickRef as the name says its a reference to the intervals, in this way we keep track of the interval
+  const autoClickRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+  if (!playingMusic) return;
+
+  const game = JSON.parse(localStorage.getItem('gameData') || '{}');
+  const autoClickLevel = game.AutoClickLevel || 0;
+
+  console.log(autoClickLevel)
+
+  if (autoClickRef.current) {
+      clearInterval(autoClickRef.current);
+    }
+
+  if (autoClickLevel > 0) {
+    autoClickRef.current = setInterval(() => {
+      // Add autoClick effect
+      const savedGame = JSON.parse(localStorage.getItem('gameData') || '{}');
+      savedGame.reach += propsService.autoClickEffect(autoClickLevel - 1);
+      localStorage.setItem('gameData', JSON.stringify(savedGame));
+      setCount(savedGame.reach); // update state
+
+      const newIndex = thresholds.filter(t => savedGame.reach >= t).length - 1;
+      setCurrentCatIndex(newIndex);
+
+
+    }, 1000); // every 1 second, change as needed
+
+    return () => clearInterval(autoClickRef.current!); // cleanup on unmount
+  }
+}, [playingMusic]); 
+
   // function to call a function
 
   const handleBuy =  {
@@ -62,7 +96,33 @@ function App() {
   },
 
   2: () => {
-    alert("im working btiches")
+    const success = propsService.autoClick();
+    if (!success) {
+      return;
+    }
+
+    const updatedGame = Cats.gameService.getGameState();
+
+    // clearing previous timers, since this function will run a lot of times you can't have multiples intervals (note to myself - please  remember what happened back in the day
+    // using node with intervals, dont repeat your mistakes hahahahhahahhaa)
+    if (autoClickRef.current) {
+      clearInterval(autoClickRef.current);
+    }
+
+    const currentLevel = updatedGame.AutoClickLevel || 0;
+    const clicksPerSecond = propsService.autoClickEffect(currentLevel - 1);
+
+      autoClickRef.current = setInterval(() => {
+      const game = Cats.gameService.getGameState();
+      game.reach += clicksPerSecond ?? 0;
+
+      setCount(game.reach);
+
+      const newIndex = thresholds.filter(t => updatedGame.reach >= t).length - 1;
+      setCurrentCatIndex(newIndex);
+
+      Cats.gameService.saveGameState(game);
+    }, 1000);
   }
   }
 
@@ -132,8 +192,8 @@ function App() {
           </a>
 
           <div className="statusInfo">
-            <p>Gato: {allCats[currentCatIndex].name}</p>
-            <p>Clicks: {allTimeCount}</p>
+            <p>Nome: {allCats[currentCatIndex].name}</p>
+            <p>Clicks Manuais: {allTimeCount}</p>
           </div>
         </div>
 

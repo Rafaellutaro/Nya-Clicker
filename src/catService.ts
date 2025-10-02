@@ -84,7 +84,9 @@ const gameStateDefault: GameState = {
     cats: cats,
     count: 0,
     multiplier: 1,
-    doubleClickLevel: 0
+    DoubleClickLevel: 0,
+    AutoClickLevel: 0,
+    autoClickInterval: 0
     
 }
 

@@ -32,7 +32,7 @@ const Shop: React.FC<ShopProps> = ({ isOpen, onClose, handleBuyFunction, propsLi
               <div className="item-info">
                 <h3>{item.name}</h3>
                 <p>
-                  Preço: {item.price[game.doubleClickLevel]} pontos
+                  Preço: {item.price[game[item.name + "Level"] ]} pontos
                 </p>
 
               </div>
