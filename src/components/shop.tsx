@@ -28,11 +28,13 @@ const Shop: React.FC<ShopProps> = ({ isOpen, onClose, handleBuyFunction, propsLi
         <div className="drawer">
           {propsList.map((item) => (
             <div key={item.id} className="drawer-slot">
-              <div className="item-icon"><item.imgs  size={40}/></div>
+              <div className="item-icon"><item.imgs size={40} /></div>
               <div className="item-info">
                 <h3>{item.name}</h3>
                 <p>
-                  Preço: {item.price[game[item.name + "Level"] ]} pontos
+                  {game[item.name + "Level"] >= item.price.length
+                    ? "Maximizado"
+                    : ` Preço: ${item.price[game[item.name + "Level"]]} pontos`}
                 </p>
 
               </div>
