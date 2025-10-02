@@ -8,11 +8,13 @@ import './shop.css'
 interface ShopProps {
   isOpen: boolean;
   onClose: () => void;
-  handleBuyDoubleClick: () => void;
+  handleBuyFunction: {
+    [key: number]: () => void;
+  };
   propsList: PropsInterface[]; // array of upgrades
 }
 
-const Shop: React.FC<ShopProps> = ({ isOpen, onClose, handleBuyDoubleClick, propsList }) => {
+const Shop: React.FC<ShopProps> = ({ isOpen, onClose, handleBuyFunction, propsList }) => {
   const game = JSON.parse(localStorage.getItem("gameData") || "{}");
 
   return (
@@ -34,7 +36,10 @@ const Shop: React.FC<ShopProps> = ({ isOpen, onClose, handleBuyDoubleClick, prop
                 </p>
 
               </div>
-              <button className="buy-btn" onClick={handleBuyDoubleClick}>
+              <button
+                className="buy-btn"
+                onClick={() => handleBuyFunction[item.id] && handleBuyFunction[item.id]()}
+              >
                 Comprar
               </button>
             </div>

@@ -12,7 +12,15 @@ const doubleClick: PropsInterface = {
     effects: [2, 4, 6, 8, 10]
 }
 
-const props: PropsInterface[] = [doubleClick];
+const autoClick: PropsInterface = {
+    id: 2,
+    name: 'Auto Click',
+    price: [500, 800, 2000, 5000, 10000],
+    imgs: TbMultiplier2X,
+    effects: [1, 2, 5, 10, 14]
+}
+
+const props: PropsInterface[] = [doubleClick, autoClick];
 
 const propsService = {
 
@@ -54,9 +62,38 @@ const propsService = {
 
     },
 
-    doubleClickPrice: (level: number) => {
-    return doubleClick.price[level] || null;
-  }
+    autoClick: () => {
+        const savedGame = JSON.parse(localStorage.getItem("gameData") || "{}");
+
+        const currentLevel = savedGame.autoClickLevel || 0;
+
+        if (currentLevel == autoClick.price.length) {
+            alert('max level reached')
+            return false;
+        }
+
+        const cost = autoClick.price[currentLevel]
+
+        if (savedGame.reach >= cost) {
+            // pay
+            savedGame.reach -= cost;
+
+            // save new level
+            savedGame.autoClickLevel = currentLevel + 1;
+
+            // save back
+            localStorage.setItem("gameData", JSON.stringify(savedGame));
+
+            return true;
+        } else {
+            alert('not enough coins')
+            return false;
+        }
+    }
+
+//     doubleClickPrice: (level: number) => {
+//     return doubleClick.price[level] || null;
+//   }
 
 }
 

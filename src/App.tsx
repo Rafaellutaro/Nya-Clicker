@@ -41,9 +41,11 @@ function App() {
 
   // shop click
 
-  // click function for double click
+  // function to call a function
 
-  const handleBuyDoubleClick = () => {
+  const handleBuy =  {
+
+    1: () => {
     const success = propsService.addDoubleClick(); // updates localStorage
     if (!success) {
       return;
@@ -57,7 +59,15 @@ function App() {
     setCurrentCatIndex(newIndex);
 
     Cats.gameService.saveGameState(updatedGame);
-  };
+  },
+
+  2: () => {
+    alert("im working btiches")
+  }
+  }
+
+  // click function for double click
+
 
   // image click
   const handleClick = () => {
@@ -102,7 +112,7 @@ function App() {
         </div>
 
 
-        <Shop isOpen={isShopOpen} onClose={() => setIsShopOpen(false)} handleBuyDoubleClick={handleBuyDoubleClick} propsList={propsService.getPropsList()}/>
+        <Shop isOpen={isShopOpen} onClose={() => setIsShopOpen(false)} handleBuyFunction={handleBuy} propsList={propsService.getPropsList()}/>
 
         <div className='Imgs'>
           <motion.img
