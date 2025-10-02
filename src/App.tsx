@@ -198,6 +198,7 @@ function App() {
         </div>
 
         <a href="https://www.vecteezy.com/free-png/cat" className='license'>Cat PNGs by Vecteezy</a>
+        <a href="https://www.flaticon.com/free-icons/cat" title="cat icons" className='license'>Cat icons created by Freepik - Flaticon</a>
       </div>
     </>
   )
