@@ -84,3 +84,74 @@
   color: black;
   font-weight: bold;
 }
+
+/* Responsividade para o Shop Overlay */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .shop-overlay {
+    width: 320px;
+  }
+
+  .item-icon {
+    font-size: 28px;
+  }
+
+  .buy-btn {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+/* Celulares grandes */
+@media (max-width: 768px) {
+  .shop-overlay {
+    width: 80%; /* ocupa mais da tela */
+  }
+
+  .shop-title {
+    font-size: 16px;
+  }
+
+  .drawer {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .drawer-slot {
+    padding: 10px;
+  }
+
+  .item-icon {
+    font-size: 24px;
+  }
+
+  .buy-btn {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .drawer-slot {
+    padding: 6px;
+    flex-direction: column;   /* empilha os elementos */
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .item-icon {
+    font-size: 18px; /* menor */
+  }
+
+  .item-info {
+    font-size: 12px; /* texto reduzido */
+    margin-left: 0;
+  }
+
+  .buy-btn {
+    width: 100%;  /* botão ocupa a largura toda */
+    font-size: 11px;
+    padding: 5px;
+  }
+}

@@ -114,3 +114,119 @@ h1{
   font-size: var(--font-size-xs);
   font-weight: 600;
 }
+
+/* Media para telas menores */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .Imgs {
+    width: 650px;
+    height: 650px;
+  }
+
+  .Img {
+    width: 630px;
+    height: 630px;
+  }
+
+  .counter {
+    width: 120px;
+    height: 60px;
+  }
+
+  .countBack {
+    width: 110px;
+    height: 50px;
+  }
+
+  .count {
+    font-size: var(--font-size-sm);
+  }
+
+  .status {
+    width: 70%;
+    margin-top: 0.3%;
+  }
+}
+
+/* Celulares grandes */
+@media (max-width: 768px) {
+  .Imgs {
+    width: 600px;
+    height: 600px;
+  }
+
+  .Img {
+    width: 580px;
+    height: 580px;
+  }
+
+  .counter {
+    width: 120px;
+    height: 60px;
+  }
+
+  .countBack {
+    width: 110px;
+    height: 50px;
+  }
+
+  .count {
+    font-size: var(--font-size-sm);
+  }
+
+  .status {
+    width: 90%;
+    margin-top: 15%;
+  }
+
+  h1 {
+    font-size: var(--font-size-md);
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+  .App{
+    padding-top: 40%;
+  }
+
+  .Imgs {
+    width: 450px;
+    height: 450px;
+  }
+
+  .Img {
+    width: 430px;
+    height: 430px;
+    
+  }
+
+  .counter {
+    width: 120px;
+    height: 60px;
+  }
+
+  .countBack {
+    width: 110px;
+    height: 50px;
+  }
+
+  .count {
+    font-size: var(--font-size-xs);
+  }
+
+  .status {
+    width: 95%;
+    margin-top: 30%;
+    border-radius: 15px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  .menu {
+    font-size: var(--font-size-s);
+  }
+}
