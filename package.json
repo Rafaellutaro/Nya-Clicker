@@ -1,16 +1,19 @@
 {
   "name": "nya-clicker",
-  "private": true,
+  "homepage": "https://Rafaellutaro.github.io/Nya-Clicker/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
+    "gh-pages": "^6.3.0",
     "howler": "^2.2.4",
     "motion": "^12.23.22",
     "react": "^19.1.1",
