@@ -2,6 +2,7 @@
 import type { PropsInterface } from "./PropsInterface";
 import { TbMultiplier2X } from "react-icons/tb";
 import { LiaRobotSolid } from "react-icons/lia";
+import toast from './toast'
 
 //Props
 
@@ -35,7 +36,7 @@ const propsService = {
         const currentLevel = savedGame.DoubleClickLevel || 0;
 
         if (currentLevel == doubleClick.price.length) {
-            alert('max level reached')
+            toast.toastService.errorMessage("Atingiu o Level Maximo")
             return false;
         }
 
@@ -57,7 +58,7 @@ const propsService = {
 
             return true;
         } else {
-            alert('not enough coins')
+            toast.toastService.errorMessage("Sem Pontos Suficientes")
             return false;
         }
 
@@ -69,7 +70,7 @@ const propsService = {
         const currentLevel = savedGame.AutoClickLevel || 0;
 
         if (currentLevel == autoClick.price.length) {
-            alert('max level reached')
+            toast.toastService.errorMessage("Atingiu o Level Maximo")
             return false;
         }
 
@@ -87,7 +88,7 @@ const propsService = {
 
             return true;
         } else {
-            alert('not enough coins')
+            toast.toastService.errorMessage("Sem Pontos Suficientes")
             return false;
         }
     },

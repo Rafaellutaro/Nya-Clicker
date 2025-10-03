@@ -7,9 +7,11 @@ import music from './assets/sounds/wiggle-until-you-giggle-217437.mp3'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import Shop from './components/shop'
 import { propsService } from "./components/Props"
+import toast from './components/toast'
 // import type { PropsInterface } from "./components/PropsInterface";
 
 function App() {
+
   const [isShopOpen, setIsShopOpen] = useState(false);
 
   const thresholds = [0, 300, 800, 2000];
@@ -75,6 +77,19 @@ function App() {
   }
 }, [playingMusic]); 
 
+// use effect for toggling sucess message
+
+useEffect(() => {
+
+   if (currentCatIndex >= 0) {
+    console.log("catIndex: " + currentCatIndex)
+
+    const success = toast.toastService.successMessage(allCats[currentCatIndex].name);
+    success
+  }
+
+}, [currentCatIndex])
+
   // function to call a function
 
   const handleBuy =  {
@@ -91,6 +106,8 @@ function App() {
     setAllTimeCount(updatedGame.count);
     const newIndex = thresholds.filter(t => updatedGame.reach >= t).length - 1;
     setCurrentCatIndex(newIndex);
+
+    console.log("doubleClick Cat Index: " + newIndex)
 
     Cats.gameService.saveGameState(updatedGame);
   },
@@ -121,6 +138,8 @@ function App() {
       const newIndex = thresholds.filter(t => game.reach >= t).length - 1;
       setCurrentCatIndex(newIndex);
 
+      console.log("autoClick Cat Index: " + newIndex)
+
       Cats.gameService.saveGameState(game);
     }, 1000);
   }
@@ -142,6 +161,8 @@ function App() {
 
     const newIndex = thresholds.filter(t => newCount >= t).length - 1;
     setCurrentCatIndex(newIndex);
+
+    console.log("manualClick Cat Index: " + newIndex)
 
     setCount(newCount);
 
@@ -169,6 +190,10 @@ function App() {
           <a href="#menu" className='menu'>
             <RxHamburgerMenu className='menuIcon' onClick={() => setIsShopOpen(true)} />
           </a>
+        </div>
+
+        <div>
+          {toast.toastService.container()}
         </div>
 
 
